@@ -1,0 +1,190 @@
+---
+title: "R & the Tidyverse"
+subtitle: "THE BASICS"
+author: "Gemma Dawson"
+date: "13 September 2018"
+output:
+  xaringan::moon_reader:
+    css: ["default", "rladies", "rladies-fonts"]
+    lib_dir: ./my_slides_files/libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    includes:
+      in_header: ./my_slides_files/header.html
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+# What is **R**?
+
+---
+
+
+# What is **S**?
+
+--
+- Developed in 1976 at Bell Labs by John Chambers
+
+---
+
+we wanted users to be able to begin in an **interactive environment**, where they did not consciously think of themselves as programming. Then as their needs became clearer and their sophistication increased, they should be able to **slide gradually into programming**, when the language and system aspects would become more important.
+
+???
+_hello presenter_
+---
+
+# What is **R**?
+
+---
+
+# What is **R**Studio?
+
+---
+
+# What is Data Science?
+
+HW book - R for Data Science flow diagram
+Breakdown as in - http://r4ds.had.co.nz/introduction.html
+
+---
+
+# First, set up!
+
+```{r}
+library(tidyverse)
+library(tree)
+```
+---
+
+# **R**esources
+## <i class="fa fa-graduation-cap fa-fw"></i> Learn
+
+
+---
+
+# **R**esources
+## <i class="fa fa-podcast fa-fw"></i> Podcasts
+
+.pull-left[
+<a href="http://nssdeviations.com/">**Not So Standard Deviations**</a><br>
+Hilary Parker <a href="http://twitter.com/hspter"><i class="fa fa-twitter fa-fw"></i>&nbsp; @hspter</a><br> 
+Roger Peng <a href="http://twitter.com/rdpeng"><i class="fa fa-twitter fa-fw"></i>&nbsp; @rdpeng</a><br>
+
+<a href="https://soundcloud.com/crediblycurious">**Credibly Curious**</a><br>
+Saskia Freytag <a href="http://twitter.com/trashystats"><i class="fa fa-twitter fa-fw"></i>&nbsp; @trashystats</a><br>
+Nicholas Tierney <a href="http://twitter.com/nj_tierney"><i class="fa fa-twitter fa-fw"></i>&nbsp; @nj_tierney</a><br>
+]
+--
+.pull-right[
+<a href="http://lineardigressions.com/">**Linear Digressions**</a><br>
+Ben Jaffe <a href="http://twitter.com/benjaffe"><i class="fa fa-twitter fa-fw"></i>&nbsp;@benjaffe</a><br>
+Katie Malone <a href="http://twitter.com/multiarmbandit"><i class="fa fa-twitter fa-fw"></i>&nbsp;@multiarmbandit</a>
+
+<a href="http://dataskeptic.com">**Data Skeptic**</a><br>
+Kyle Polich <a href="http://twitter.com/dataskeptic"><i class="fa fa-twitter fa-fw"></i>&nbsp;@dataskeptic</a><br>
+Linh Da Tran  
+
+<a href="http://r-podcast.org/">**The R-Podcast**</a><br>
+Eric Nantz <a href="http://twitter.com/thercast"><i class="fa fa-twitter fa-fw"></i>&nbsp;@thercast</a>
+
+<a href="http://partiallyderivative.com/">**Partially Derivative**</a> [no longer running]<br>
+Chris Albon <a href="http://twitter.com/chrisalbon"><i class="fa fa-twitter fa-fw"></i>&nbsp;@chrisalbon</a><br>
+Jonathon Morgan <a href="http://twitter.com/jonathonmorgan"><i class="fa fa-twitter fa-fw"></i>&nbsp;@jonathonmorgan</a><br>
+Vidya Spandana <a href="http://twitter.com/Vid_Spandana"><i class="fa fa-twitter fa-fw"></i>&nbsp;@Vid_Spandana</a>
+]
+---
+
+# **R**esources
+## <i class="fa fa-globe fa-fw"></i> Online
+
+--
+<a href="http://r4ds.had.co.nz/">**R for Data Science**</a><br>
+Garrett Grolemund <a href="http://twitter.com/StatGarrett"><i class="fa fa-twitter fa-fw"></i>&nbsp;@StatGarrett</a><br>
+Hadley Wickham <a href="http://twitter.com/hadleywickham"><i class="fa fa-twitter fa-fw"></i>&nbsp;@hadleywickham</a><br>
+
+--
+
+<a href="https://community.rstudio.com/">**RStudio Community**</a><br>
+A community for all things R and RStudio.
+
+--
+
+<a href="https://stackoverflow.com/questions/tagged/r">**Stack Overflow**</a><br>
+Stack Overflow is the largest, most trusted online developer community for developers to learn, share their knowledge, and build their careers.<br>
+
+--
+
+<a href="https://www.r-bloggers.com/">**R-bloggers**</a><br>
+The site helps R bloggers and users to connect and follow the “R blogosphere”.<br>
+
+--
+
+<a href="https://twitter.com">**Twitter**</a><br>
+\#rstats \#rladies \#tidytuesday
+
+???
+_#tidytuesday = A weekly data project aimed at the R ecosystem. An emphasis will be placed on understanding how to summarize and arrange data to make meaningful charts with ggplot2, tidyr, dplyr, and other tools in the tidyverse ecosystem._
+
+---
+
+# **R**esources
+## <i class="fa fa-comments fa-fw"></i> Conferences & Meetups
+
+<a href="https://www.r-project.org/conferences.html">**useR! conference**</a><br>
+<a href="http://www.user2019.fr/">Toulouse, France in July 2019</a><br>
+This is the main meeting of the R user and developer community, its program consisting of both invited and user-contributed presentations.<br>
+
+<a href="https://blog.rstudio.com/categories/rstudioconf">**RStudo::conf**</a><br>
+<a href="http://www.cvent.com/events/rstudio-conf-austin/event-summary-dd6d75526f3c4554b67c4de32aeffb47.aspx">Austin, Texas in January 2019</a><br>
+The conference for all things R and RStudio.<br>
+
+<a href="https://twitter.com/satRdays_org">**satRday**</a><br>
+Community-led, regional, affordable conferences<br>
+
+.pull-left[
+<a href="">**RUsers**</a><br>
+<a href="https://caperuser.wordpress.com/">Cape Town</a><br>
+<a href="https://www.meetup.com/Joburg-R-Users-Group/">Johannesburg</a><br>
+]
+.pull-right[
+<a href="https://rladies.org/">**RLadies**</a><br>
+<a href="https://rladies-community-slack.herokuapp.com/">Global R-Ladies Community on Slack</a><br>
+<a href="https://www.meetup.com/rladies-johannesburg/">Cape Town</a><br>
+<a href="https://www.meetup.com/rladies-johannesburg/">Johannesburg</a><br>
+]
+---
+
+class: inverse, center, middle
+
+# Keep in touch
+
+<a href="http://linkedin.com/in/gemmadawson/"><i class="fa fa-linkedin fa-fw"></i>&nbsp; Gemma Dawson</a><br>
+<a href="http://twitter.com/gemmadawsonza"><i class="fa fa-twitter fa-fw"></i>&nbsp; @gemmadawsonza</a><br>
+<a href="http://github.com/GemmaDawson"><i class="fa fa-github fa-fw"></i>&nbsp; @GemmaDawson</a><br>
+
+
+<a href="http://icepack.ai">![](./my_slides_files/img/ICEPACK LOGO - BLACK.png)</a>
+<a href="mailto:gemma.dawson@icepack.co"><i class="fa fa-paper-plane fa-fw"></i>&nbsp; gemma.dawson@icepack.co</a><br>
+
+---
+
+
+background-image: url("https://media.giphy.com/media/10ZkZlv7XYbNF6/giphy.gif")
+background-position: 50% 50%
+class: center, inverse
+
+# Get Started
+
+---
+
+class: center, middle
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+https://twitter.com/apreshill
+
