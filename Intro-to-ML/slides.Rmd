@@ -1,25 +1,28 @@
 ---
-title: "R & the Tidyverse"
-subtitle: "THE BASICS"
-author: "Gemma Dawson"
-date: "13 September 2018"
+title: "Introduction to Machine Learning"
+subtitle: "Supervised Learning in R"
+author: "<br><br>Gemma Dawson"
+date: "<br><br>13 September 2018"
 output:
   xaringan::moon_reader:
-    css: ["default", "rladies", "rladies-fonts"]
-    lib_dir: ./my_slides_files/libs
+    lib_dir: libs
+    css: ["assets/kunoichi.css", "assets/ninpo.css", "assets/ninjutsu.css"]
+    seal: true 
+    self_contained: false
     nature:
+      ratio: "16:9"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-    includes:
-      in_header: ./my_slides_files/header.html
 ---
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 ```
 
-# What is **R**?
+class: middle center bg-main1
+
+# What is Machine Learning?
 
 ---
 
