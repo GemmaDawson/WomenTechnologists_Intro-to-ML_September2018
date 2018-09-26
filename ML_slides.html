@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to Machine Learning</title>
+    <meta charset="utf-8">
+    <meta name="author" content="  Gemma Dawson" />
+    <meta name="date" content="2018-09-13" />
+    <link href="libs/font-awesome-animation/font-awesome-animation-emi.css" rel="stylesheet" />
+    <script src="libs/fontawesome/js/fontawesome-all.min.js"></script>
+    <link rel="stylesheet" href="assets/kunoichi.css" type="text/css" />
+    <link rel="stylesheet" href="assets/ninpo.css" type="text/css" />
+    <link rel="stylesheet" href="assets/ninjutsu.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Intro to Machine Learning
+## Supervised Learning in R
+### <br><br>Gemma Dawson
+### <br><br>13 September 2018
+
+---
+
+
+
+
+layout: true
+class: split-30
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[What is Machine Learning?]
+]]
+
+.row[.content[
+  .split-70[
+  .column[.content.vmiddle.center[
+  .font3[“The field of study that gives computers the ability to learn **without being explicitly programmed**.”]
+]]
+  .column[.content.vmiddle.right[
+  .padding[.img-fill[![](images/arthursamuel.jpeg)]]
+  ]]
+  ]]]
+  
+
+???
+
+---
+
+class: hide-row2-col1 hide-row2-col2
+
+---
+
+class: hide-row2-col2
+count: false
+
+---
+
+count: false
+
+---
+
+layout: true
+class: split-30
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[What is Machine Learning?]
+]]
+
+.row[.content[
+  .split-two[
+  .column[.content.vtop.center[
+  .font2[Supervised Learning]
+  .padding[
+  .img-fill[![](https://media.giphy.com/media/xT0xeB1qmLLqVgJwFq/giphy.gif)]
+  ]]]
+  .column[.content.vtop.center[
+  .font2[Unsupervised Learning]
+  .padding[
+  .img-fill[![](https://media.giphy.com/media/1sbQgDfLFqqek/giphy.gif)]
+  ]]
+  ]]
+  ]]
+  
+---
+
+class: hide-row2-col1 hide-row2-col2
+
+---
+
+class: hide-row2-col2
+count: false
+
+---
+
+count: false
+
+---
+
+layout: false
+class: split-20
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[What is Supervised Learning?]
+]]
+
+.row[.content.vmiddle.center[
+# **GOAL**: create a predictive model
+&lt;img src="images/supervised.png" width="55%"&gt;
+]]
+
+???
+supervised learning is done using a ground truth.
+
+goal of supervised learning is to learn a function that, given a sample of data and desired outputs, best approximates the relationship between input and output observable in the data
+
+if the output label is a real number, we call the task regression. If the label is from the limited number of values, where these values are unordered, then it’s classification.
+
+---
+
+layout: true
+class: split-20
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[What is Supervised Learning?]
+]]
+
+.row[.content[.split-two[
+  .column[.content.vtop.center[
+  .font2[Regression]&lt;br&gt;
+  &lt;br&gt;
+  &lt;img src="images/super-regression.png" width="75%"&gt;
+  ]]
+  .column[.content.vtop.center[
+  .font2[Classification]&lt;br&gt;
+  &lt;br&gt;
+  &lt;img src="images/super-class.png" width="75%"&gt;
+  ]]
+  ]]]
+
+
+???
+# classification
+- k-nearest neighbours
+- trees
+
+#regression
+- liner regression
+- decison trees &amp; random forest
+
+---
+
+class: hide-row2-col1 hide-row2-col2
+
+---
+
+class: hide-row2-col2
+count: false
+
+---
+
+count: false
+
+---
+
+layout: false
+class: split-20
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[What is Unsupervised Learning?]
+]]
+
+.row[.content.vmiddle.center[
+# **GOAL**: create a descriptive model
+&lt;img src="images/unsupervised.jpeg" width="55%"&gt;
+]]
+
+???
+does not have labeled outputs, 
+
+goal is to infer the natural structure present within a set of data points
+
+---
+
+layout: false
+class: split-20
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[What is Unsupervised Learning?]
+]]
+
+.row[.content.vtop.center[
+  .font2[Clustering]&lt;br&gt;
+  &lt;br&gt;
+  &lt;img src="images/unsuper.png" width="38%"&gt;
+  ]]
+
+---
+
+layout: false
+class: split-20
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+&lt;img src="images/decision-tree.png" width="55%"&gt;
+]]
+
+???
+# Pros
+- simple to understand and interpret
+- Works with both numerical and categorical data
+
+# Cons
+- Easy to overfit the tree
+
+# A decision tree uses if-then statements to define patterns in data.
+If the price of a house is above some value, then the house is probably in some Cape Town.
+These statements are called forks and split the data into two **branches**
+
+The initial split might will likely classify some homes into the wrong category and we call these **false negatives** and **false postives**
+
+The next step in the process is to look at the subset of the data looking at a different variable, maybe the size of the house provides the next split for houses the model is placing in Johannesburg while the year built provides a better split for houses that model predicts are in Cape Town.  This repetition is called **recursion**.  Deciding on which variable provides the best split is determined using a mathematical model, typically we look at the minimising the error.
+
+We grow the tree until we meet a predefined stopping point.
+
+Then we test the tree using data that was not provided to train the model.  
+
+---
+
+layout: false
+class: split-20
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+  &lt;img src="images/tree0.png" width="55%"&gt;
+  ]]
+
+---
+
+layout: false
+class: split-20
+count: false
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+  &lt;img src="images/tree01.png" width="55%"&gt;
+  ]]
+  
+---
+
+layout: false
+class: split-20
+count: false
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+  &lt;img src="images/tree02.png" width="55%"&gt;
+  ]]
+  
+---
+
+layout: false
+class: split-20
+count: false
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+  &lt;img src="images/tree03.png" width="55%"&gt;
+  ]]
+  
+---
+
+layout: false
+class: split-20
+count: false
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+  &lt;img src="images/tree04.png" width="55%"&gt;
+  ]]
+
+---
+
+layout: false
+class: split-20
+count: false
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+  &lt;img src="images/tree05.png" width="55%"&gt;
+  ]]
+  
+---
+
+layout: false
+class: split-20
+count: false
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+  &lt;img src="images/tree06.png" width="55%"&gt;
+  ]]
+
+---
+
+layout: false
+class: split-20
+count: false
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+  &lt;img src="images/tree07.png" width="55%"&gt;
+  ]]
+  
+---
+
+layout: false
+class: split-20
+count: false
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+  &lt;img src="images/tree08.png" width="55%"&gt;
+  ]]
+
+---
+
+layout: false
+class: split-20
+count: false
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+  &lt;img src="images/tree09.png" width="55%"&gt;
+  ]]
+  
+---
+
+layout: false
+class: split-20
+count: false
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+  &lt;img src="images/tree10.png" width="55%"&gt;
+  ]]
+
+---
+
+layout: false
+class: split-20
+count: false
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Supervised Learning: Decision Trees]
+]]
+
+.row[.content.vmiddle.center[
+  &lt;img src="images/tree11.png" width="55%"&gt;
+  ]]
+  
+---
+
+class: split-70 hide-slide-number
+background-image: url("bkgs/bg_r.jpg")
+background-size: cover
+
+.column.slide-in-left[
+.sliderbox.vmiddle.shade_main.left[
+.font5[R and RStudio]]]
+.column[
+]
+
+---
+layout: false
+class: split-20
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[RLadies &amp; R Users Groups]
+]]
+
+.row[.content[.split-two[
+  .column[.content.vmiddle.center[
+  &lt;img src="images/meetupladies.png" width="85%"&gt;
+  ]]
+  .column[.content.vmiddle.center[
+  &lt;img src="images/meetup.png" width="85%"&gt;
+  ]]
+  ]]]
+
+---
+
+layout: false
+class: split-70 hide-slide-number
+background-image: url("bkgs/titanic.jpg")
+background-size: cover
+
+.column.slide-in-left[
+.sliderbox.vmiddle.shade_main.left[
+.font5[Titanic]&lt;br&gt;
+.font3[Machine Learning from Disaster]]]
+.column[
+]
+
+---
+
+layout: true
+class: split-20
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Machine Learning from Disaster]
+]]
+
+.row[.split-two[
+  .column[.content.vtop[
+  [&lt;img src="images/kaggle.png" width="60%"&gt;](https://www.kaggle.com/c/titanic)
+  # training.csv
+  .font2[891 entries]&lt;br&gt;
+  .font2[11 variables]
+&lt;br&gt;
+  # test.csv
+  .font2[418 entries]&lt;br&gt;
+  .font2[10 variables]
+  ]]
+  .column[.content.vmiddle.center[
+  ### **GOAL**: predict tof the Titanic's passengers survived
+  &lt;img src="https://media.giphy.com/media/voCR6kkAiVPm8/giphy.gif" width="100%"&gt;
+  ]]
+]]
+
+???
+https://www.kaggle.com/c/titanic
+
+April 15 1912
+
+---
+
+class: hide-row2-col1 hide-row2-col2
+
+---
+
+class: hide-row2-col2
+count: false
+
+---
+
+count: false
+
+---
+
+layout: true
+class: split-30 with-border
+
+.column[.split-two[
+  .row.bg-main1[.content.vmiddle.left[
+    # Load libraries
+  ]]
+  .row.bg-main1[.content.vmiddle.left[
+    # Import the data
+  ]]
+]]
+
+.column[.split-two[
+  .row.bg-black[.content.vmiddle.left[
+    
+    ```r
+    library(tidyverse)
+    library(rpart)
+    library(rpart.plot)
+    ```
+  ]]
+  .row.bg-black[.content.vmiddle.left[
+    
+    ```r
+    titanic &lt;- read_csv(file = "data/titanic.csv", col_names = TRUE)
+    ```
+  ]]
+]]
+
+---
+
+class: hide-row1-col2 hide-row2-col1 hide-row2-col2 
+
+---
+
+class: hide-row2-col1 hide-row2-col2
+count: false
+
+---
+
+class: hide-row2-col2
+count: false
+
+---
+
+count: false
+
+---
+
+layout: false
+class: split-10 with-border
+.row.bg-main1[.content.vmiddle.left[
+  # Let's look at the data
+]]
+.row.bg-black[.content.vtop.left[
+  
+  ```r
+  head(titanic)
+  ```
+  
+  ```
+  ## # A tibble: 6 x 12
+  ##   PassengerId Survived Pclass Name    Sex     Age SibSp Parch Ticket  Fare
+  ##         &lt;int&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;dbl&gt;
+  ## 1           1        0      3 Braund… male     22     1     0 A/5 2…  7.25
+  ## 2           2        1      1 Cuming… fema…    38     1     0 PC 17… 71.3 
+  ## 3           3        1      3 Heikki… fema…    26     0     0 STON/…  7.92
+  ## 4           4        1      1 Futrel… fema…    35     1     0 113803 53.1 
+  ## 5           5        0      3 Allen,… male     35     0     0 373450  8.05
+  ## 6           6        0      3 Moran,… male     NA     0     0 330877  8.46
+  ## # ... with 2 more variables: Cabin &lt;chr&gt;, Embarked &lt;chr&gt;
+  ```
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+.row.bg-main1[.content.vmiddle.left[
+  # Tidy &amp; Transform
+]]
+.row.bg-black[.content.vtop.left[
+  
+  ```r
+  summary(titanic$Pclass)
+  ```
+  
+  ```
+  ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  ##   1.000   2.000   3.000   2.309   3.000   3.000
+  ```
+  
+  ```r
+  titanic$Pclass &lt;- as.factor(titanic$Pclass)
+  
+  summary(titanic$Pclass)
+  ```
+  
+  ```
+  ##   1   2   3 
+  ## 216 184 491
+  ```
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+.row.bg-main1[.content.vmiddle.left[
+  # Tidy &amp; Transform
+]]
+.row.bg-black[.content.vtop.left[
+  
+  ```r
+  summary(titanic$Survived)
+  ```
+  
+  ```
+  ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  ##  0.0000  0.0000  0.0000  0.3838  1.0000  1.0000
+  ```
+  
+  ```r
+  titanic$Survived &lt;- if_else(titanic$Survived == 1, 
+                                "yes",
+                                "no")
+  
+  summary(titanic$Survived)
+  ```
+  
+  ```
+  ##    Length     Class      Mode 
+  ##       891 character character
+  ```
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+.row.bg-main1[.content.vmiddle.left[
+  # Tidy &amp; Transform
+]]
+.row.bg-black[.content.vtop.left[
+  
+  ```r
+  summary(titanic$Age)
+  ```
+  
+  ```
+  ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  ##    0.42   20.12   28.00   29.70   38.00   80.00     177
+  ```
+  
+  ```r
+  titanic$Age &lt;- if_else(is.na(titanic$Age), 
+                            mean(titanic$Age, na.rm = T), 
+                            titanic$Age)
+  
+  summary(titanic$Age)
+  ```
+  
+  ```
+  ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  ##    0.42   22.00   29.70   29.70   35.00   80.00
+  ```
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+.row.bg-main1[.content.vmiddle.left[
+  # Tidy &amp; Transform
+]]
+.row.bg-black[.content.vtop.left[
+  
+  ```r
+  titanic$Family &lt;- titanic$SibSp + titanic$Parch
+  
+  summary(titanic$Family)
+  ```
+  
+  ```
+  ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  ##  0.0000  0.0000  0.0000  0.9046  1.0000 10.0000
+  ```
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+.row.bg-main1[.content.vmiddle.left[
+  # Tidy &amp; Transform
+]]
+.row.bg-black[.content.vtop.left[
+  
+  ```r
+  titanic &lt;- titanic %&gt;% 
+                select(Pclass, Sex, Age, Fare, Family, Survived)
+  
+  glimpse(titanic)
+  ```
+  
+  ```
+  ## Observations: 891
+  ## Variables: 6
+  ## $ Pclass   &lt;fct&gt; 3, 1, 3, 1, 3, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 2,...
+  ## $ Sex      &lt;chr&gt; "male", "female", "female", "female", "male", "male",...
+  ## $ Age      &lt;dbl&gt; 22.00000, 38.00000, 26.00000, 35.00000, 35.00000, 29....
+  ## $ Fare     &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 8.4583, 51....
+  ## $ Family   &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 4, 2, 1, 2, 0, 0, 6, 0, 0, 5, 0,...
+  ## $ Survived &lt;chr&gt; "no", "yes", "yes", "yes", "no", "no", "no", "no", "y...
+  ```
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+.row.bg-main1[.content.vmiddle.left[
+  # Model
+]]
+.row.bg-black[.content.vtop.left[
+  
+  ```r
+  tree.titanic &lt;- rpart(formula = Survived ~ ., data = titanic)
+  
+  rpart.plot(tree.titanic, fallen.leaves = F)
+  ```
+  
+  ![](ML_slides_files/figure-html/fig.show("hold")-1.png)&lt;!-- --&gt;
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+
+.row.bg-main1[.content.vmiddle.left[
+ # Visualise &amp; Communicate
+]]
+
+.row[.content.vmiddle.center[
+&lt;img src="images/treePlot.png" width="60%"&gt;
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+
+.row.bg-main1[.content.vmiddle.left[
+ # Predict
+]]
+
+.row[.content.vmiddle.center[
+&lt;img src="images/rose0.png" width="60%"&gt;
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+count: false
+
+.row.bg-main1[.content.vmiddle.left[
+ # Predict
+]]
+
+.row[.content.vmiddle.center[
+&lt;img src="images/rose1.png" width="60%"&gt;
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+count: false
+
+.row.bg-main1[.content.vmiddle.left[
+ # Predict
+]]
+
+.row[.content.vmiddle.center[
+&lt;img src="images/rose2.png" width="60%"&gt;
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+
+.row.bg-main1[.content.vmiddle.left[
+ # Predict
+]]
+
+.row[.content.vmiddle.center[
+&lt;img src="images/jack0.png" width="60%"&gt;
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+count: false
+
+.row.bg-main1[.content.vmiddle.left[
+ # Predict
+]]
+
+.row[.content.vmiddle.center[
+&lt;img src="images/jack1.png" width="60%"&gt;
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+count: false
+
+.row.bg-main1[.content.vmiddle.left[
+ # Predict
+]]
+
+.row[.content.vmiddle.center[
+&lt;img src="images/jack2.png" width="60%"&gt;
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+count: false
+
+.row.bg-main1[.content.vmiddle.left[
+ # Predict
+]]
+
+.row[.content.vmiddle.center[
+&lt;img src="images/jack3.png" width="60%"&gt;
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+count: false
+
+.row.bg-main1[.content.vmiddle.left[
+ # But we all know that Jack could have survived<span>&lt;i class="fas  fa-angry faa-burst animated " style=" color:red;"&gt;&lt;/i&gt;</span>
+]]
+
+.row[.content.vmiddle.center[
+&lt;img src="images/two.jpg" width="50%"&gt;
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+.row.bg-main1[.content.vmiddle.left[
+  # Import, Tidy, &amp; Transform the Test Data
+]]
+.row.bg-black[.content.vtop.left[
+  
+  ```r
+  # Import the test.csv file
+  titanic.test &lt;- read_csv(file = "data/test.csv", col_names = TRUE)
+  
+  # Convert the Passenger Class to a factor
+  titanic.test$Pclass &lt;- as.factor(titanic.test$Pclass)
+  
+  # Tidy the missing Age observations
+  titanic.test$Age &lt;- if_else(is.na(titanic.test$Age), 
+                                mean(titanic$Age, na.rm = T),   
+                                titanic.test$Age)
+  
+  # Create the Family variable
+  titanic.test$Family &lt;- titanic.test$SibSp + titanic.test$Parch
+  
+  # Grab the variables we originally used
+  titanic.test &lt;- titanic.test %&gt;%
+                    select(PassengerId, Pclass, Sex, Age, Fare, Family)
+  ```
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+.row.bg-main1[.content.vmiddle.left[
+  # Import, Tidy, &amp; Transform the Training Data
+]]
+.row.bg-black[.content.vtop.left[
+  
+  ```r
+  titanic.test$Predict &lt;- predict(tree.titanic, titanic.test, type = "class")
+  
+  summary(titanic.test$Predict)
+  ```
+  
+  ```
+  ##  no yes 
+  ## 284 134
+  ```
+  
+  ```r
+  titanic.test$Survived &lt;- if_else(titanic.test$Predict == "yes", 1, 0)
+  
+  titanic.submit &lt;- titanic.test %&gt;% 
+                      select(PassengerId, Survived)
+  
+  
+  write.csv(titanic.submit, file = "data/titanic_answer.csv", row.names = FALSE)
+  ```
+]]
+
+---
+
+layout: false
+class: split-10 with-border
+count: false
+
+.row.bg-main1[.content.vmiddle.left[
+ # How did we do?
+]]
+
+.row[.content.vmiddle.center[
+&lt;img src="images/kaggle.png" width="30%"&gt;&lt;br&gt;
+&lt;img src="images/kaggleleaderboard.png" width="50%"&gt;
+]]
+
+---
+
+layout: false
+class: split-60 hide-slide-number
+background-image: url("bkgs/desktopbw.jpg")
+background-size: cover
+
+.column.slide-in-left[
+.sliderbox.vmiddle.shade_main.left[
+  &lt;img src="images/icepack.png" width="70%"&gt;&lt;br&gt;
+  .font5[Gemma Dawson]
+]]
+
+.column[.content.vmiddle.right[
+### .indigo[<span>&lt;i class="fas  fa-laptop faa-float animated "&gt;&lt;/i&gt;</span>  www.icepack.ai]
+### .indigo[<span>&lt;i class="fab  fa-github faa-float animated "&gt;&lt;/i&gt;</span>  @GemmaDawson]
+### .indigo[<span>&lt;i class="fab  fa-twitter faa-float animated "&gt;&lt;/i&gt;</span>  @gemmadawsonza]
+]]
+
+---
+
+layout: false
+class: split-30
+
+.row.bg-main1[.content.vmiddle.center[
+.font4[Thank you]
+]]
+
+.row[.content[
+  .split-70[
+  .column[.content.vmiddle.center[
+  &lt;img src="images/kunoichi-showcase.gif" width="70%"&gt;
+]]
+  .column[.content.vmiddle.center[
+  &lt;img src="images/EmiTanaka.jpeg" width="50%"&gt;&lt;br&gt;
+  # Emi Tanaka
+  ### .deep-purple[<span>&lt;i class="fab  fa-github faa-float animated "&gt;&lt;/i&gt;</span>  @emitanaka]
+  ### .deep-purple[<span>&lt;i class="fab  fa-twitter faa-float animated "&gt;&lt;/i&gt;</span>  @statsgen]
+]]
+  ]]
+  ]]]
+    </textarea>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
