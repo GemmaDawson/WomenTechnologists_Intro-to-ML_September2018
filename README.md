@@ -14,4 +14,4 @@ These slides are from the `R` portion of the evening's talks.
 To view, either open the ML\_slides.html file (which should open in your default internet browser) or open the ML\_slides.pdf file.  Although the pdf file loses all the good gifs.
 
 ## Thank you!
-I built my slides in R Markdown using [@emitanaka](https://github.com/emitanaka) **kunoichi-theme** for the [xaringan / remark.js slides](https://github.com/yihui/xaringan).
+I built my slides in R Markdown using [@emitanaka](https://github.com/emitanaka)'s AMAZING **kunoichi-theme** for the [xaringan / remark.js slides](https://github.com/yihui/xaringan).
